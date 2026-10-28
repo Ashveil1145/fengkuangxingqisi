@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你收到一个红包</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            background: #fff3e5;
+        }
+
+        .page {
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .tip {
+            color: #8c3023;
+            font-size: 18px;
+            margin-bottom: 24px;
+        }
+
+        /* 红包 */
+        .envelope {
+            width: 260px;
+            height: 350px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, #f8463b, #c90018);
+            border-radius: 14px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 30px #a52a2a33;
+            border: 3px solid #f6c76b;
+        }
+
+        /* 红包上半部分 */
+        .top {
+            height: 145px;
+            background: linear-gradient(135deg, #ff6251, #d9001b);
+            border-bottom: 2px solid #f8ce75;
+            border-radius: 0 0 50% 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .coin {
+            width: 70px;
+            height: 70px;
+            border: 3px solid #ffe5a2;
+            border-radius: 50%;
+            color: #ffe5a2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+        }
+
+        .main-text {
+            color: #ffe5a2;
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 22px;
+            letter-spacing: 5px;
+        }
+
+        .sub-text {
+            color: #ffe5a2;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+
+        .open-btn {
+            margin-top: 24px;
+            width: 76px;
+            height: 76px;
+            border: 3px solid #f8d78b;
+            border-radius: 50%;
+            background: #ffdc83;
+            color: #a92818;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px #7b000033;
+            transition: transform 0.2s;
+        }
+
+        .open-btn:hover {
+            transform: scale(1.08);
+        }
+
+        .hint {
+            margin-top: 22px;
+            color: #a35b44;
+            font-size: 13px;
+        }
+
+        /* 拆开红包后的内容 */
+        .result {
+            display: none;
+            max-width: 340px;
+            margin: 0 auto;
+            padding: 35px 22px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px #a52a2a20;
+            animation: pop 0.5s ease;
+        }
+
+        .result .emoji {
+            font-size: 55px;
+        }
+
+        .result h1 {
+            color: #d92525;
+            font-size: 32px;
+            margin: 18px 0;
+        }
+
+        .result p {
+            color: #555;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .chicken {
+            font-size: 46px;
+            margin: 15px 0;
+        }
+
+        .again {
+            border: none;
+            border-radius: 25px;
+            background: #d92525;
+            color: white;
+            padding: 12px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page" id="giftPage">
+
+        <div class="tip">
+            🧧 你收到一个红包，请查收！
+        </div>
+
+        <div class="envelope">
+            <div class="top">
+                <div class="coin">福</div>
+            </div>
+
+            <div class="main-text">骗你的</div>
+            <div class="sub-text">拆开看看有什么惊喜</div>
+
+            <button class="open-btn" onclick="openRedPacket()">
+                开
+            </button>
+        </div>
+
+        <div class="hint">
+            点击上面的按钮领取红包
+        </div>
+    </div>
+
+    <div class="result" id="result">
+        <div class="emoji">🤡</div>
+        <h1>骗你的！</h1>
+        <p>
+            根本没有红包！<br>
+            不过今天可是……
+        </p>
+
+        <div class="chicken">🍗🍗🍗</div>
+
+        <h2 style="color:#d92525;">
+            疯狂星期四！
+        </h2>
+
+        <p>
+            V我50，听我给你讲一个故事。<br>
+            （不给也没关系，故事照讲。）
+        </p>
+
+        <button class="again" onclick="playAgain()">
+            再骗一次
+        </button>
+    </div>
+
+    <script>
+        function openRedPacket() {
+            document.getElementById("giftPage").style.display = "none";
+            document.getElementById("result").style.display = "block";
+        }
+
+        function playAgain() {
+            document.getElementById("result").style.display = "none";
+            document.getElementById("giftPage").style.display = "block";
+        }
+    </script>
+</body>
+</html>
